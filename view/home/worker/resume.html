@@ -1,0 +1,162 @@
+<style type="text/css">
+	div.inputClass{
+		margin-top: -10px;
+		font-size: 36px;
+		width: 73%;
+		float: right;
+	}
+	span.changeBtn{
+		float: right;
+		font-size: 22px;
+	}
+	span.changeBtn a:hover{
+		text-decoration: none;
+	}
+	.profileLine{
+		padding-top: 4%;
+		padding-bottom: 2%;
+		border-bottom: 1px solid #eff0f2;
+	}
+	.profileLine label{
+		font-size: 22px;
+	}
+	.profileLine input{
+		width: 95%;
+	}
+</style>
+<div style="background-color: #eff0f2;padding-bottom:20px;padding-top:20px;">
+    <div class="container">
+        <span style="color:#919191;font-size:24px;">
+        	Resume manage
+        </span>
+	</div>
+</div>
+<div class="container" style="padding-top:30px;">
+	<div class="row">
+		<div class="col-md-12">
+	    	<label class="formText">Experience</label>
+	    	<span class="changeBtn">
+	    		<a ng-click="changeExperience()" class="hover" ng-init="experience = true">change</a>
+	    	</span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+	    	<div ng-show="experience">
+	    		<div id="experience"></div>
+	    	</div>
+	    	<div ng-hide="experience">
+	    		<!-- <text-editor ngModel="worker.worker_telephone"></text-editor> -->
+	    		<summer-note for-id="editor" height="200" 
+	    					 for-watch="worker.worker_experience" >
+	    		</summer-note>
+	    	</div>
+		</div>
+	</div>
+	<div class="row" style="padding-top:30px;">
+		<div class="col-md-12">
+	    	<label class="formText">Skills</label>
+	    	<span class="changeBtn">
+		    		<a ng-click="changeWorkerSkills()" class="hover" ng-init="workerSkills = true">change</a>
+	    	</span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+	    	<div ng-show="workerSkills" style="margin-left:-4px;">
+			    <div>
+			    	<span class="record hover" ng-repeat="skill in worker.skills" style="border-bottom:0px;"
+				           title="Remove">{{skill.code_value}}
+				        &nbsp;
+				    </span>
+			    </div>
+	    	</div>
+	    	<div ng-hide="workerSkills">
+	    		<div>
+		    		<select 
+						id="skill" 
+						ng-model="worker.skills" 
+						select-picker
+						data-live-search="true" 
+						title="Selected skills"  
+						ng-options ="skill as skill.code_value for skill in skillsOption" 
+						ng-change="selectSkill()" 
+						multiple
+						watch="worker.skills"
+						data-size="7">
+				    </select>
+				    <span class="record hover" ng-click="removeAll()" title="RemoveAll">Remove All  
+				    <span class="glyphicon glyphicon-remove"></span>
+			    </div>
+			    <div>
+			    	<span class="record hover" ng-repeat="skill in worker.skills" style="border-bottom:0px;"
+				          ng-click="removeSkill($index)"  title="Remove">{{skill.code_value}}
+				        <span class="glyphicon glyphicon-remove"></span>
+				        &nbsp;
+				    </span>
+			    </div>
+	    	</div>
+		</div>
+	</div>
+</div>
+</div>
+<script type="text/javascript">
+	function clickHirerImg(){
+		$('#hirer_file_upload').trigger('click');
+	}
+	function clickWorkerImg(){
+		$('#worker_file_upload').trigger('click');
+	}
+	function changeHirerImg(){
+		// if($('#img').attr('src') == '' || $('#img').attr('src') == undefined){
+	        $('#changHirerImg').ajaxSubmit(function(msg){
+	        	if(msg == ''){
+	        		alert('Invalid file type.');
+	        	}else{
+	        		var fileOld = $('#hirerImg').attr('src');
+	        		var fileNew = msg;
+		        	$('#hirerImg').attr('src',fileNew);
+		        	//delete old img
+	        		$.ajax({
+					 	type: "POST",
+			          	url: "uploads/remove.php",
+			          	data: "file="+fileOld
+			        });	
+		        	
+			        //update DB img value
+			        $.ajax({
+			        	type: "POST",
+			          	url: "uploads/updateHirerImg",
+			          	data: "fileNew="+fileNew+"&fileOld="+fileOld
+	        		});
+	        	}
+	        });
+		// }
+	}
+	function changWorkerImg(){
+		// if($('#img').attr('src') == '' || $('#img').attr('src') == undefined){
+	        $('#changWorkerImg').ajaxSubmit(function(msg){
+	        	if(msg == ''){
+	        		alert('Invalid file type.');
+	        	}else{
+	        		var fileOld = $('#workerImg').attr('src');
+	        		var fileNew = msg;
+		        	$('#workerImg').attr('src',fileNew);
+		        	//delete old img
+	        		$.ajax({
+					 	type: "POST",
+			          	url: "uploads/remove.php",
+			          	data: "file="+fileOld
+			        });	
+		        	
+			        //update DB img value
+			        $.ajax({
+			        	type: "POST",
+			          	url: "uploads/updateWorkerImg",
+			          	data: "fileNew="+fileNew+"&fileOld="+fileOld
+	        		});
+	        	}
+	        });
+		// }
+	}
+</script>

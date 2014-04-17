@@ -1,0 +1,194 @@
+<div class="container" style="margin-top:-20px;">
+  <div class="row">
+    <div class="col-md-3">
+      <a class="btn btn-lg btn-primary step_btn">
+        1.Create your Account
+      </a></div>
+    <div class="col-md-3">
+      <a class="btn btn-lg btn-default step_btn">
+        2. Preview
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a class="btn btn-lg btn-default step_btn">
+        3.Finished
+      </a>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-9">
+      <h2>STEP 1: Create your Account</h2>
+    </div></div>
+  <hr>
+  <div class="category">
+    First,complete your login infomation
+  </div>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div><span class="errorMsg">{{emailmsg}}</span></div> 
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <label class="formText">Email</label>
+    </div>
+    <div class="col-md-4">
+      <input  class="form-control" size="40" type="text" placeholder="Email"
+       ng-model='login.member_email' ng-blur="checkEmail()" ng-disabled="accountInput">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div><span class="errorMsg">{{accountmsg}}</span></div> 
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <label class="formText">Account</label>
+    </div>
+    <div class="col-md-4">
+      <input class="form-control" size="40"  type="text" placeholder="Account" ng-model='login.member_account' ng-blur="checkAccount()" ng-disabled="accountInput">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div><span class="errorMsg">{{passwordmsg1}}</span></div> 
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <label class="formText">Password</label>
+    </div>
+    <div class="col-md-4">
+      <input class="form-control" size="40"  type="password" placeholder="Password"
+       ng-model='login.member_pwd' ng-blur="checkPasswordLength()" ng-disabled="accountInput">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div><span class="errorMsg">{{passwordmsg}}</span></div>  
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+    <label class="formText">Repassword</label>
+    </div>
+    <div class="col-md-4">
+      <input class="form-control" size="40"  type="password"  placeholder="Retype Password"
+       ng-model='login.member_pwd1'  ng-blur="checkPassword()" ng-disabled="accountInput">
+    </div>
+  </div>
+  <hr>
+  <div class="category">
+      Second,your Account Infomation
+  </div>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div><span class="errorMsg">{{nameErrorMsg}}</span></div> 
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <label class="formText">Name</label>
+    </div>
+    <div  class="col-md-4">
+      <input class="form-control" size="40" type="text" placeholder="Name" ng-model='worker.worker_name'>  
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div><span class="errorMsg">{{addressErrorMsg}}</span></div>  
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <label class="formText">Address</label>
+    </div>
+    <div  class="col-md-4">
+      <input class="form-control" size="40" type="text" 
+      placeholder="Address" ng-model='worker.worker_address'>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div><span class="errorMsg">{{telephoneErrorMsg}}</span></div>  
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <label class="formText">Telephone</label>
+    </div>
+    <div  class="col-md-4">
+      <input class="form-control" size="40" type="text" 
+      placeholder="Telephone" ng-model='worker.worker_telephone'>
+    </div>
+  </div>
+  <br>
+  <!-- <div class="row">
+    <div class="col-md-2">
+      <label class="formText">Portrait</label>
+    </div>
+    <div  class="col-md-4">
+      <input type="file" size="50" class="form-control"
+          name="file_upload" id="fileUpload" file-upload
+          >
+    </div>
+    <div class="col-md-3">
+      <img id="fileUploadImage" src="{{worker.worker_image}}" style="height:140px;"/>
+    </div>
+  </div> -->
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div><span class="errorMsg">{{experienceErrorMsg}}</span></div> 
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <label class="formText">Experience</label>
+    </div>  
+    <div class="col-md-7">
+      <summer-note for-id="editor" height="200" for-watch="worker.worker_experience"></summer-note>
+      <!-- <text-editor ngModel="worker.worker_experience"></text-editor> -->
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div><span class="errorMsg">{{skillsErrorMsg}}</span></div> 
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <label class="formText">Master skill</label>
+    </div>
+    <div class="col-md-6">
+      <select 
+        id="skill" 
+        ng-model="worker.skills" 
+        select-picker
+        data-live-search="true" 
+        title="Selected skills"  
+        ng-options ="skill as skill.code_value for skill in skillsOption" 
+        ng-change="selectSkill()" 
+        multiple
+        watch="worker.skills"
+        data-size="7">
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <span ng-click="removeAllSelect()" class="hover-pointer" title="Remove" style="position:relative;left:5px;">Remove all
+        <span id="removeAll" class="glyphicon glyphicon-remove"></span>
+      </span>
+      <br>
+      <span class="record hover" ng-repeat="skill in worker.skills" style="border-bottom:0px;"
+          ng-click="removeSkill($index)"  title="Remove">{{skill.code_value}}
+        <span class="glyphicon glyphicon-remove"></span>
+        &nbsp;
+      </span>
+    </div>
+  </div>
+  <div style="padding-left:15%;">
+    <br><span class="errorMsg">{{continueErrorMsg}}</span>
+    <br><span>{{sendActiveMailErrorMsg}}</span>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <button type="submit" class="btn btn-block btn-primary btn-lg" 
+      ng-click="registerAccount()">Next  Step</button>
+    </div>
+  </div>
+</div>

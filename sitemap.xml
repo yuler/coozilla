@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
+<!-- Free Sitemap Generator http://www.sitemapx.com -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>http://www.coozilla.com/</loc>
+<priority>1.0</priority>
+<lastmod>2014-03-07T17:30:23+00:00</lastmod>
+<changefreq>Always</changefreq>
+</url>
+<url>
+<loc>http://www.coozilla.com/about.html</loc>
+<priority>0.8</priority>
+<lastmod>2014-03-07T17:30:23+00:00</lastmod>
+<changefreq>Always</changefreq>
+</url>
+<url>
+<loc>http://www.coozilla.com/contact.html</loc>
+<priority>0.8</priority>
+<lastmod>2014-03-07T17:30:23+00:00</lastmod>
+<changefreq>Always</changefreq>
+</url>
+<url>
+<loc>http://www.coozilla.com/privacy.html</loc>
+<priority>0.8</priority>
+<lastmod>2014-03-07T17:30:24+00:00</lastmod>
+<changefreq>Always</changefreq>
+</url>
+<url>
+<loc>http://www.coozilla.com/trems.html</loc>
+<priority>0.8</priority>
+<lastmod>2014-03-07T17:30:23+00:00</lastmod>
+<changefreq>Always</changefreq>
+</url>
+<url>
+<loc>http://www.coozilla.com/#!/job/detail/9b38441f7d1133b8914146f61896ecd3</loc>
+<priority>0.8</priority>
+<lastmod>2014-03-07T17:30:23+00:00</lastmod>
+<changefreq>Always</changefreq>
+</url>
+</urlset>

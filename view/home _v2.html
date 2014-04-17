@@ -1,0 +1,189 @@
+<div >
+ 	<center>
+        <!-- <a href="{{URL::to('/')}}/index" style="text-decoration:none;"><strong id="logo">Coozilla</strong></a> -->
+        <div style="background-color: #eff0f2;padding-bottom:40px;padding-top:40px;">
+            <div style="width:960px;">
+                <span style="color:#919191;font-size:18px;">
+                Coozilla is a new Internet platform.
+                It can help you find out about the programmer's job.
+                And you can also release associated with programmers Recruitment Information.
+                </span>
+            </div>
+        </div>
+    </center>
+</div>
+<div id="body">
+	<!-- 图片轮换效果 -->
+	<!-- <div class="row">
+		<div class="col-xs-1"></div>
+		<div class="col-xs-4 " id="hire">
+			<div id="carousel-1" class="carousel slide" data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li data-target="#carousel-1" data-slide-to="0"class="active"></li>
+					<li data-target="#carousel-1" data-slide-to="1"></li>
+					<li data-target="#carousel-1" data-slide-to="2"></li>
+					<li data-target="#carousel-1" data-slide-to="3"></li>
+				</ol>
+				 <div class="carousel-inner">
+					<div class="item active">
+						<div>
+							<img src="assets/img/1.jpg" alt="提示1"  height="240px" align="top">
+						</div>
+					</div>
+					<div class="item">
+						<div>
+						<img src="assets/img/2.jpg" alt="提示2"  height="240px">
+						</div>
+					</div>
+					<div class="item">
+						<div>
+						<img src="assets/img/3.jpg" alt="提示3"  height="240px" >
+						</div>
+					</div>
+					<div class="item">
+						<div>
+						<img src="assets/img/4.jpg" alt="提示3"  height="240px" >
+						</div>
+					</div>
+				</div> 
+			</div>	
+		</div>
+		<div class="col-xs-2"></div>
+		<div class="col-xs-4" id="work">
+			<div id="carousel-2" class="carousel slide" data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li data-target="#carousel-2" data-slide-to="0"class="active"></li>
+					<li data-target="#carousel-2" data-slide-to="1"></li>
+					<li data-target="#carousel-2" data-slide-to="2"></li>
+					<li data-target="#carousel-2" data-slide-to="3"></li>
+				</ol>
+				 <div class="carousel-inner">
+					<div class="item active">
+						<div>
+							<img src="assets/img/1.jpg" alt="提示1"  height="240px" align="top">
+						</div>
+					</div>
+					<div class="item">
+						<div>
+						<img src="assets/img/2.jpg" alt="提示2"  height="240px">
+						</div>
+					</div>
+					<div class="item">
+						<div>
+						<img src="assets/img/3.jpg" alt="提示3"  height="240px" >
+						</div>
+					</div>
+					<div class="item">
+						<div>
+						<img src="assets/img/4.jpg" alt="提示3"  height="240px" >
+						</div>
+					</div>
+				</div>
+			</div>	 
+		</div>
+	</div> -->
+	<div style="padding-bottom:40px;width:700px;height:380px;margin-left:13.55%;">
+	  <div style="float:left">
+	    <div href="#" class="thumbnail" style="padding: 0;border:0px;">
+	    	<div class="imgHead" style="height:340px;width:285px;border-radius: 15px;">
+	    		<center>
+	    			<br><br><br>
+		      		<img src="assets/img/compass.png" alt="Post you Job" height="112px" widht="111px">
+		      		<br><br>
+		      		<div><span style="font-size:20px;">Post Your Job</span></div>
+		      		<br>
+					<a  class="btn btn-primary btn-lg" ng-click='postJob()'>Post Job Now (Alpha Free)</a>
+		      	</center>
+		      	<br>
+			</div>
+		</div>
+	  </div>
+	  <div style="float:right">
+	    <div href="#" class="thumbnail" style="padding: 0;border:0px;" width="340px;">
+	    	<div class="imgHead" style="height:340px;width:285px;border-radius: 15px;">
+	    		<center>
+	    			<br><br><br>
+		      		<img src="assets/img/share.png" alt="Register Account" height="112px" widht="111px">
+		      		<br><br>
+		      		<div><span style="font-size:20px;">Register Your Account</span></div>
+		      		<br>
+					<a  class="btn btn-primary btn-lg" ng-click="postWork()">Register  Now (Alpha Free)</a>
+		      	</center>
+		      	<br>
+			</div>
+		</div>
+	  </div>
+	</div>
+	<!-- <div style="border-bottom:2px solid #ccc;"></div> -->
+	<!-- <div class="container"> -->
+		<!-- description -->
+		<!-- <div class="container">
+			<h3>
+				Coozilla is a new Internet platform.It can help you find out about the programmer's job.And you can also release associated with programmers Recruitment Information
+			</h3>
+		</div> -->
+		<!-- search -->
+		<div class="row search" >
+			<div class="col-xs-6">
+				<h4>
+					<input type="text" placeholder="Search title like : 'java','C+','css','javascript'...... " style="height:46px;width:205%" ng-model="searchText">
+				</h4>
+			</div>
+			<div class="col-xs-3"></div>
+			<!-- <div class="col-xs-3">
+				<h4>
+					<a class="btn btn-lg btn-success btn-block" type="submit"><i class="icon-search"></i>Search</a>
+				</h4>
+			</div> -->
+		</div>
+<!-- 	</div> -->
+	<!-- datagrid -->
+	<div class="datagrid container" style="padding-top:20px;">
+		<div ng-show="design">
+			<div class="category" >Design Jobs</div>
+			<div href="#" class="row record" ng-repeat= "design in designs" ng-click="detailJob(design.id)">
+				<div class="company col-xs-4 col-xs-offset-1">{{design.hirer_orgname }}</div>
+				<div class="title col-xs-5" name="job_title" id="{{design.id}}" >{{design.job_title }}</div>
+				<div class="date"  style="float:right">{{design.created_at  }}</div>
+				<!-- <div class="date col-xs-2 ">{{ design.created_at | date:'MMM dd EEE' }}</div> -->
+			</div>
+			<div class="row">
+				<div class="record title col-xs-2 col-xs-offset-10">
+					View more
+				</div>
+			</div>
+		</div>
+
+		<div ng-show="progamming">
+			<div class="category" >Programming Jobs</div>
+			<div href="#" class="row record" ng-repeat= "progamming in progammings" ng-click="detailJob(progamming.id)">
+				<div class="company col-xs-4 col-xs-offset-1">{{progamming.hirer_orgname }}</div>
+				<div class="title col-xs-5" id="{{progamming.id}}">{{progamming.job_title }}</div>
+				<div class="date"  style="float:right">{{progamming.created_at }}</div>
+			</div>
+			<div class="row">
+				<div class="record title col-xs-2 col-xs-offset-10">
+					View more
+				</div>
+			</div>
+		</div>
+		
+		<div ng-show="systemAdmin">
+			<div class="category" >System Administration Jobs</div>
+			<div href="#" class="row record" ng-repeat= "systemAdmin in systemAdmins" ng-click="detailJob(systemAdmin.id)">
+				<div class="company col-xs-4 col-xs-offset-1">{{systemAdmin.hirer_orgname }}</div>
+				<div class="title col-xs-5" name="job_title" id="{{systemAdmin.id}}">{{systemAdmin.job_title }}</div>
+				<div class="date " style="float:right">{{systemAdmin.created_at  }}</div>
+			</div>
+			<div class="row">
+				<div class="record title col-xs-2 col-xs-offset-10">
+					View more
+				</div>
+			</div>
+		</div>
+		
+		<div>
+			{{result}}
+		</div>
+	</div>
+</div>

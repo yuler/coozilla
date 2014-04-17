@@ -1,0 +1,29 @@
+<style type="text/css">
+.row{padding:20px 0;}
+</style>
+<div style="background-color: #eff0f2;padding-bottom:20px;padding-top:20px;">
+    <div class="container">
+        <span style="color:#919191;font-size:24px;">
+        	Forget password.
+        </span>
+	</div>
+</div>
+<div class="container">
+	<h4 style="padding-top:30px;">Please enter your email address below and we will send you a link to reset your password.</h4>
+	<br>
+	<div class="row">
+		<div class="col-md-1">
+		  <label for="emailInput" class="formText">Email</label></div>
+		<div class="col-md-4">
+		  <input type="text" id="emailInput" ng-blur="blur_email()" ng-model="member_email" 
+	    		ng-class="{errorInput:mailInput}" class="form-control">
+		</div>
+		<div class="col-md-3">
+			<span class="errorMsg" style="float:right;">{{usernameErrorMsg}}</span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+		  <button id="signIn" class="btn btn-lg btn-primary" style="width:72.5%;" ng-click="forget()">Send mail</button></div>
+	</div>
+</div>

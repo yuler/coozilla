@@ -1,0 +1,105 @@
+<style type="text/css">
+	table.info{
+		font-size: 18px;
+		text-align: left;
+	}
+	span.infoData{
+		padding-left: 8%;
+	}
+	input.infoData{
+		border-radius:3px;
+		width: 60%;
+	}
+</style>
+<div>
+	<div style="font-size:24px;">
+		Hirer
+	</div>
+	<hr>
+	<div>
+		<table class="info" cellpading="2" cellSpacing="4" width="100%">
+			<tr>
+				<td>
+					Account
+				</td>
+				<td>
+					<input class="infoData" value="{{login.member_account}}" disabled>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Email
+				</td>
+				<td>
+					<input class="infoData" value="{{login.member_email}}" disabled>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Name
+				</td>
+				<td>
+					<input class="infoData" value="{{hirer.hirer_orgname}}" ng-model="hirer.hirer_orgname">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Url
+				</td>
+				<td>
+					<input class="infoData" value="{{hirer.hirer_orgsite}}" ng-model="hirer.hirer_orgsite">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Address
+				</td>
+				<td>
+					<input class="infoData" value="{{hirer.hirer_orgaddress}}" ng-model="hirer.hirer_orgaddress">
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<form action="uploads/upload.php" method="post" enctype="multipart/form-data" id="changImg">
+			<input type="file" size="40" name="Filedata" id="file_upload" onchange="changeImg()" >
+		</form>
+	</div>									
+	<div style="float:right;" >
+		<img src="{{hirer.hirer_image}}" height="100px;" width="200px;" id="img" onClick="clickImg()" >
+	</div>
+	<button class="btn btn-lg btn-primary" style="margin-top:7%;width:70%;" ng-click="update()">Save</button>
+</div>
+<script type="text/javascript">
+	function clickImg(){
+		$('#file_upload').trigger('click');
+	}
+	function changeImg(){
+		// if($('#img').attr('src') == '' || $('#img').attr('src') == undefined){
+	        $('#changImg').ajaxSubmit(function(msg){
+	        	if(msg == ''){
+	        		alert('Invalid file type.');
+	        	}else{
+	        		var fileOld = $('#img').attr('src');
+	        		var fileNew = msg;
+		        	$('#img').attr('src',fileNew);
+		        	//delete old img
+	        		$.ajax({
+					 	type: "POST",
+			          	url: "uploads/remove.php",
+			          	data: "file="+fileOld
+			        });	
+		        	
+			        //update DB img value
+			        $.ajax({
+			        	type: "POST",
+			          	url: "uploads/updateHirerImg",
+			          	data: "fileNew="+fileNew+"&fileOld="+fileOld
+	        		});
+	        	}
+	        });
+		// }
+	}
+</script>
+
+

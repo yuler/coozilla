@@ -1,0 +1,24 @@
+<div>
+	<div style="font-size:24px;">
+		Hirer
+	</div>
+	<hr>
+	<div >
+		<button ng-click="checkAll()">All</button>
+		<button ng-click="checkNone()">None</button>
+		<button ng-click="deleteJob()">Del</button>
+		<button ng-click="newJob()">New</button>
+	</div>
+	<div style="margin-left:2%;">
+		<div href="#" class="row record" ng-repeat="job in jobs"
+				ng-click="click_checkbox(job.id,$index)">
+			<div class="col-xs-1">
+				<input type="checkbox" i-check ng-model="job.checkbox" name="{{job.id}}">
+			</div>
+			<div class="col-xs-3 col-xs-offset-1">{{job.job_category|jobCategoryFilter}}</div>
+			<div class="col-xs-4">{{job.job_title}}</div>
+			<div style="float:right"><a class="btn-link btn-sm" ng-click="detail(job.id)">Edit</a></div>
+			<div class="col-xs-3"  style="float:right">{{job.created_at}}</div>
+		</div>
+	</div>
+</div>		

@@ -1,0 +1,30 @@
+<div class="container" style="margin-top:-30px;">
+	<h2>{{job.job_title}} <span style="font-size:0.6em">/ {{job.job_category|jobCategoryFilter}}</span></h2>
+	<hr>
+	<div class="jobDescription"></div>
+	<hr>
+	<div class="row">
+		<div class="col-md-4" style="line-height:32px;">
+			<div>
+				<span>Must need skill :</span>
+				<span >
+					<span ng-repeat="skill in job.skills" style="font-weight:bold;">
+						{{skill}}
+					</span>
+				</span>
+			</div>
+			<div>
+				Email:{{login.member_email}}<br>
+				Address:{{hirer.hirer_orgaddress}}<br>
+				URL:{{hirer.hirer_orgsite}}<br>
+				Publisher : {{hirer.hirer_orgname}}<br>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<!-- <img src="{{hirer.hirer_image}}" width="295px" height="135px;"> -->
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-5 col-md-offset-5"><span class="errorMsg">{{activeErrorMsg}}</span></div>
+	</div>
+</div>

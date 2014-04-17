@@ -1,0 +1,90 @@
+<style type="text/css">
+	div.inputClass{
+		margin-top: -10px;
+		font-size: 36px;
+		width: 73%;
+		float: right;
+	}
+	span.changeBtn{
+		float: right;
+		font-size: 22px;
+	}
+	span.changeBtn a:hover{
+		text-decoration: none;
+	}
+	.profileLine{
+		padding-top: 4%;
+		padding-bottom: 2%;
+		border-bottom: 1px solid #eff0f2;
+	}
+	.profileLine label{
+		font-size: 22px;
+	}
+	.profileLine input{
+		width: 95%;
+	}
+</style>
+<div style="background-color: #eff0f2;padding-bottom:20px;padding-top:20px;">
+    <div class="container">
+        <span style="color:#919191;font-size:24px;">
+        	Job manage.
+        </span>
+	</div>
+</div>
+<div class="container" style="padding-top:20px;">
+	<ul class="nav nav-tabs row" id="myTab">
+	  <li class="col-md-3 active" style="text-align:center;cursor:pointer;">
+	  	<a data-toggle="tab" ng-click="publishJobsBtn()">Published Jobs</a></li>
+	  <li class="col-md-3" style="text-align:center;cursor:pointer;">
+	  	<a data-toggle="tab" ng-click="unpublishJobsBtn()">Unpublished Jobs</a></li>
+	</ul>
+	<br>
+	<div class="row">
+		<div class="col-md-12">
+	    	<!-- welecome -->
+			<div ng-hide="page.data">
+				<button ng-click="newJob()" class="btn btn-primary">New</button>
+				<center>
+					<h1>
+						Nothing  result.
+					</h1>
+				</center>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+	    	<!-- datagrid -->
+			<div ng-show="page.data">
+				<button ng-click="checkAll()">All</button>
+				<button ng-click="checkInvert()">Invert</button>
+				<button ng-click="deleteJob()">Del</button>
+				<button ng-click="newJob()">New</button>
+			</div>
+			<br>
+			<div>
+				<div>
+					<div href="#" class="row record" ng-repeat="job in page.data">
+						<div ng-click="click_checkbox(job.id,$index)">
+							<div class="col-xs-1">
+								<input type="checkbox"  ng-model="job.checkbox" name="{{job.id}}">
+							</div>
+							<div class="col-xs-3 col-xs-offset-1">{{job.job_category|jobCategoryFilter}}</div>
+							<div class="col-xs-4">{{job.job_title}}</div>
+						</div>	
+						<div style="float:right"><a class="btn-link btn-sm" ng-click="edit(job.id)">Edit</a></div>
+						<div class="col-xs-3"  style="float:right">{{job.created_at}}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+	    	<!-- pagination -->
+			<div ng-show="page.data">
+				<coozilla-pagination></coozilla-pagination>
+			</div>
+		</div>
+	</div>
+</div>

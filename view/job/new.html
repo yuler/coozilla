@@ -1,0 +1,353 @@
+<style type="text/css">
+.row{padding:5px 0;}
+.infoData{top:5px;position:relative;}
+</style>
+<div class="container" style="margin-top:-20px;">
+  <div class="row">
+    <div class="col-md-3">
+      <a class="btn btn-lg btn-primary step_btn">
+        1. Create Your Job
+      </a></div>
+    <div class="col-md-3">
+      <a class="btn btn-lg btn-default step_btn">
+        2. Preview
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a class="btn btn-lg btn-default step_btn">
+        3. Confirm And Publish
+      </a>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-9">
+      <h2>STEP 1: Create Your Job</h2>
+    </div></div>
+  <hr>
+  <div class="category">
+    First, tell us about the job
+  </div>
+  <div class="step_01">
+    <!-- title -->
+    <div class="row">
+      <div class="col-md-2">
+        <label class="formText">Job title</label>
+      </div>
+      <div class="col-md-4">
+        <input type="text" class="form-control"
+            placeholder="'Senior Designer' or 'Rails Programmer'" ng-model="job.job_title">
+      </div>
+      <div class="col-md-4">
+        <span class="errorMsg">{{titleErrorMsg}}</span>
+      </div>
+    </div>
+    <!-- category -->
+    <div class="row">
+      <div class="col-md-2">
+        <label class="formText">Category</label>
+      </div>
+      <div class="col-md-4">
+        <select id="job_category" select-picker 
+          ng-model="job.job_category" watch="job.job_category">
+            <option value="1">Design</option>
+            <option value="2" select="selected">Programming</option>
+            <option value="3">System administration</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <span class="errorMsg">{{categoryErrorMsg}}</span>
+      </div>
+    </div>
+    <div class="row">
+	    <div class="col-md-2">
+	        <label class="formText">Description</label><span class="errorMsg">{{descriptionErrorMsg}}</span>
+	    </div>
+      <div class="col-md-7">
+        <!-- editor -->
+        <!-- <text-editor ngModel="job.job_description"></text-editor> -->
+        <summer-note for-id="editor" height="200" for-watch="job.job_description"></summer-note>
+      </div>
+    </div>
+  </div>    <br>
+  <!-- skill -->
+  <div class="row">
+    <div class="col-md-2">
+      <label class="formText">Need skill</label>
+    </div>
+    <div class="col-md-2">
+      <select id="job_skills" 
+        ng-model="job.skills" 
+        select-picker
+        data-live-search="true" 
+        title="Selected skills(max 5)" 
+        ng-options ="skill as skill.code_value for skill in skillsOption" 
+        ng-change="selectSkill()"
+        multiple
+        watch="job.skills"
+        data-size="7">
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div>
+        <span style="position:relative;left:5px;" ng-click="removeAllSelect()" class="hover-pointer" title="Remove">Remove all
+        <span id="removeAll" class="glyphicon glyphicon-remove"></span></span>
+        <span class="errorMsg">{{skillsErrorMsg}}</span>
+      </div>
+      <div class="record hover" ng-repeat="skill in job.skills"
+        ng-click="removeSkill($index)"  title="Remove"
+        style="border-bottom:0px;">{{skill.code_value}}
+        <span class="glyphicon glyphicon-remove"></span>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="category">
+      Second,enter you account
+  </div>
+  <hr>
+  <!-- not exist account -->
+  <div ng-hide="existAccount">
+    <!-- nav -->
+    <div class="row">
+      <div class="col-md-4">
+        <ul class="nav nav-pills">
+          <li ng-class="{active:active_new}" ng-click="activeNew()"><a href="javascript:void(0)">New user</a></li>
+          <li ng-class="{active:active_old}" ng-click="activeOld()"><a href="javascript:void(0)">Old user</a></li>
+        </ul>
+      </div>
+    </div>
+    <br>
+    <!-- new -->
+    <div ng-show="active_new">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div><span class="errorMsg">{{accountErrorMsg}}</span></div>  
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <label class="formText">Account</label>
+        </div>
+        <div class="col-md-4">
+          <input type="text" size="40" class="form-control" 
+           placeholder="Enter your account" 
+           ng-model="login.member_account"
+           ng-disabled="accountInput"
+           ng-blur="isExistAccount()">
+         </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div><span class="errorMsg">{{emailErrorMsg}}</span></div>  
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <label class="formText">Email</label>
+        </div>  
+        <div class="col-md-4">
+          <input  type="text" size="40" class="form-control"
+           placeholder="Enter your Email" 
+           ng-model="login.member_email"
+           ng-blur="checkMail()"
+           ng-disabled="accountInput">
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div><span class="errorMsg">{{pwdErrorMsg}}</span></div>  
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <label class="formText">Password</label>
+        </div>  
+        <div class="col-md-4">
+          <input type="password" size="40" class="form-control"
+           placeholder="Enter your password"
+           ng-model="login.member_pwd"
+           ng-disabled="accountInput">
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div><span class="errorMsg">{{pwd2ErrorMsg}}</span></div> 
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <label class="formText">Repassword</label>
+        </div>
+        <div class="col-md-4">
+          <input type="password" size="40" class="form-control"
+          ng-model="login.member_pwd2"
+          placeholder="Retype password" 
+          ng-blur="checkPwd()"
+          ng-disabled="accountInput">
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div><span class="errorMsg">{{nameErrorMsg}}</span></div> 
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <label class="formText">Company name</label>
+        </div>  
+        <div class="col-md-4">
+          <input type="text" size="40" class="form-control"
+          placeholder="Enter company name or your name" 
+          ng-model="hirer.hirer_orgname">
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-2">
+          <label class="formText">Headquarters</label>
+        </div>  
+        <div class="col-md-4">  
+          <input type="text" size="40" class="form-control"
+          placeholder="Enter company address or your address" ng-model="hirer.hirer_orgaddress">
+        </div>    
+      </div>
+      <br>
+      <!-- <div class="row">
+        <div class="col-md-2">
+          <label class="formText">Logo</label>
+        </div>  
+        <div class="col-md-2">
+          <input type="file" size="40" class="form-control"
+          	name="file_upload" id="fileUpload" file-upload="hirer.hirer_image">
+        </div>
+        <div class="col-xs-3">  
+          <img id="fileUploadImage" src="{{hirer.hirer_image}}" style="height:140px;"/>
+        </div>
+      </div> -->
+      <br>
+      <div class="row">
+        <div class="col-md-2">
+        <label class="formText">URL</label>
+        </div>  
+        <div class="col-md-4">
+          <input  type="text" size="40" class="form-control"
+           placeholder="Enter company URL or your URL" ng-model="hirer.hirer_orgsite">
+        </div> 
+      </div>
+      <br>
+    </div>  
+    <!-- old -->
+    <div ng-show="active_old">
+      <div class="row">
+        <div class="col-md-2">
+          <label class="formText">Account</label>
+        </div>  
+        <div class="col-md-4">  
+          <input type="text" size="40" class="form-control"
+            ng-model="login.member_account" ng-blur="checkAccount()">
+        </div>
+        <div class="col-md-4">  
+          <span class="{{checkAccountClass}}">  {{checkAccountMsg}}</span>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-2">
+          <label class="formText">Password</label>
+        </div>  
+        <div class="col-md-4">    
+          <input type="password" size="40" class="form-control" ng-model="login.member_pwd">
+        </div>
+        <div class="col-md-4">  
+          <span class="{{checkPasswordClass}}"> {{checkPasswordMsg}}</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          <button ng-click="loginAccount()" class="btn btn-primary btn-lg btn-block" style="margin-top:10px;">Login</button>
+        </div>
+      </div>
+      <br>
+    </div>
+    <div class="row">
+      <div class="col-xs-10" >
+        <span class="errorMsg">{{continueErrorMsg}}</span>
+        <span class="errorMsg">{{sendActiveMailErrorMsg}}</span>
+      </div>
+    </div>
+  </div>
+  <!-- exist account -->
+  <div ng-show="existAccount">
+    <div class="row">
+      <div class="col-md-2">
+        <label class="formText">Account</label>
+      </div>
+      <div class="col-md-2">
+        <span class="infoData">{{login.member_account}}</span>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-primary icon-signout" ng-click="loginOut()">LoginOut</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <label class="formText">Email</label>
+      </div>
+      <div class="col-md-2">
+        <span class="infoData">{{login.member_email}}</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <label class="formText">Name</label>
+      </div>
+      <div class="col-md-2">
+        <span class="infoData">{{hirer.hirer_orgname}}</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <label class="formText">Url</label>
+      </div>
+      <div class="col-md-2">
+        <span class="infoData">{{hirer.hirer_orgsite}}</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <label class="formText">Address</label>
+      </div>
+      <div class="col-md-3">
+        <span class="infoData">{{hirer.hirer_orgaddress}}</span>
+      </div>
+    </div>
+    <!-- <div class="row">
+      <div class="col-md-2">
+        <label class="formText">Photo</label>
+      </div>
+      <div class="col-md-2">
+        <img src="{{hirer.hirer_image}}" height="100px;" width="200px;">
+      </div>
+    </div> -->
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-6">
+      <button class="btn btn-primary btn-lg btn-block" 
+           ng-class="{disabled:continueClass}" ng-click="continueBtn()">Next Step
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- modal -->
+<div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-body" style="margin-left:10%;margin-top:20%;">
+          <img src="/assets/img/loading1.gif">
+          <span style="font-size:26px;padding-left:15%;">Loading.......</span>
+        </div>
+    </div>
+</div>

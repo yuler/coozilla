@@ -1,0 +1,62 @@
+<style type="text/css">
+	table.info{
+		font-size: 18px;
+		text-align: left;
+	}
+	span.infoData{
+		padding-left: 8%;
+	}
+</style>
+<div>
+	<div style="font-size:24px;">
+		Hirer
+	</div>
+	<hr>
+	<div>
+		<table class="info" cellpading="2" cellSpacing="4" width="100%">
+			<tr>
+				<td>
+					Account
+				</td>
+				<td>
+					<span class="infoData">{{login.member_account}}</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Email
+				</td>
+				<td>
+					<span class="infoData">{{login.member_email}}</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Name
+				</td>
+				<td>
+					<span class="infoData">{{hirer.hirer_orgname}}</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Url
+				</td>
+				<td>
+					<span class="infoData">{{hirer.hirer_orgsite}}</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Address
+				</td>
+				<td>
+					<span class="infoData">{{hirer.hirer_orgaddress}}</span>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="float:right;" >
+		<img src="{{hirer.hirer_image}}" height="100px;" width="200px;">
+	</div>
+</div>

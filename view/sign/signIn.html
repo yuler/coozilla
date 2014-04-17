@@ -1,0 +1,53 @@
+<style type="text/css">
+.row{padding:20px 0;}
+</style>
+<div style="background-color: #eff0f2;padding-bottom:20px;padding-top:20px;">
+    <div class="container">
+        <span style="color:#919191;font-size:24px;">
+        	Sign In.
+        </span>
+	</div>
+</div>
+<div class="container">
+	<div class="row" style="padding-top:50px;">
+		<div class="col-md-3">
+		  <label for="username" class="formText">Username or Email </label></div>
+		<div class="col-md-4">
+		  <input type="text" id="username" ng-blur="blur_username()" 
+		  		ng-model="login.member_account" 
+	    		ng-class="{errorInput:usernameInput}" class="form-control">
+		</div>
+		<div class="col-md-3">
+			<span class="errorMsg" style="float:right;">{{usernameErrorMsg}}</span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3">
+		  <label for="pwd" class="formText">Password</label></div>
+		<div class="col-md-4">
+		  <input type="password" id="pwd"  ng-model="login.member_pwd" 
+		  		ng-class="{errorInput:passwordInput}" 
+		  		onkeydown="if(event.keyCode==13) document.getElementById('signIn').click();"  class="form-control">
+		</div>
+		<div class="col-md-3">
+			<span class="errorMsg">{{passwordErrorMsg}}</span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-5">
+			<a href="{{$root.url_pattern}}/forget">forget your password?</a> no account? <br>
+			<a href="{{$root.url_pattern}}/signUp">join employer</a> or <a href="{{$root.url_pattern}}/post/work/new">join employee</a>
+			<div class="form_unit form_checkbox" style="padding-top:15px;">
+				<input checked="checked" id="remember_me" name="remember_me" 
+						type="checkbox" value="1">
+				<label for="remember_me">Remember me</label>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<button id="signIn" class="btn btn-lg btn-primary btn-block" ng-click="signIn()">
+				Sign in</button>
+		</div>
+	</div>
+</div>

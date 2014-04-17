@@ -1,0 +1,445 @@
+<div id="body">
+	<div >
+		<center>
+			<div>
+				<button class="btn btn-lg btn-primary">
+					1. Create Your Job
+				</button>&nbsp;&nbsp;
+				<button class="btn btn-lg btn-default">
+					2. Preview
+				</button>&nbsp;&nbsp;
+				<button class="btn btn-lg btn-default">
+					3. Confirm And Publish
+				</button>
+			</div>
+			<div>
+				<br>
+				<div class="step">STEP 1: Create Your Job</div>
+			</div>
+		</center>
+		<hr>
+
+		<div >
+			<div class="category">
+				First, tell us about the job
+			</div>
+
+			<div class="step_01">
+				<!-- title -->
+				<div class="row">
+					<div class="col-xs-5"></div>
+					<div><span class="errorMsg">{{titleErrorMsg}}</span></div>	
+				</div>		
+				<div class="row">
+					<div class="col-xs-5">
+						<label class="formText" style="text-align: left;">Job title</label>
+					</div>
+					<div class="col-xs-4">
+						<input type="text" class="formInput" size="40"
+								placeholder="'Senior Designer' or 'Rails Programmer'" ng-model="job.job_title">
+					</div>
+				</div>
+				<br>
+				<!-- category -->
+				<div class="row">
+					<div class="col-xs-5"></div>
+					<div><span class="errorMsg">{{categoryErrorMsg}}</span></div>	
+				</div>	
+				<div class="row">
+					<div class="col-xs-5">
+						<label class="formText">Category</label>
+					</div>	
+					<div class="col-xs-4">
+						<select id="job_category"  select-picker
+							 data-width="235%" ng-model="job.job_category" watch="job.job_category">
+						    <option value="1">Design</option>
+						    <option value="2" select="selected">Programming</option>
+						    <option value="3">System administration</option>
+						</select>
+					</div>
+				</div>
+				<br>
+				<!-- editor -->
+				<div class="row">
+					<div class="col-xs-12">
+						<label class="formText">Job description</label>
+						<span class="errorMsg">{{descriptionErrorMsg}}</span>
+					</div>
+				</div>	
+
+				</div>		
+					</div>
+					<div id="toolbar" class="btn-toolbar" data-role="editor-toolbar" 
+						data-target="#editor" ;>
+					      <div class="btn-group">
+					        <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font">
+					        	<i class="icon-font"></i><b class="caret"></b>
+					        </a>
+					          	<ul class="dropdown-menu">
+			          				<li><a data-edit="fontName Serif" style="font-family:'Serif'">Serif</a></li>
+			          				<li><a data-edit="fontName Sans" style="font-family:'Sans'">Sans</a></li>
+			          				<li><a data-edit="fontName Arial" style="font-family:'Arial'">Arial</a></li>
+			          				<li><a data-edit="fontName Arial Black" style="font-family:'Arial Black'">Arial Black</a></li>
+			          				<li><a data-edit="fontName Courier" style="font-family:'Courier'">Courier</a></li>
+			          				<li><a data-edit="fontName Courier New" style="font-family:'Courier New'">Courier New</a></li>
+			          				<li><a data-edit="fontName Comic Sans MS" style="font-family:'Comic Sans MS'">Comic Sans MS</a></li>
+			          				<li><a data-edit="fontName Helvetica" style="font-family:'Helvetica'">Helvetica</a></li>
+			          				<li><a data-edit="fontName Impact" style="font-family:'Impact'">Impact</a></li>
+			          				<li><a data-edit="fontName Lucida Grande" style="font-family:'Lucida Grande'">Lucida Grande</a></li>
+			          				<li><a data-edit="fontName Lucida Sans" style="font-family:'Lucida Sans'">Lucida Sans</a></li>
+			          				<li><a data-edit="fontName Tahoma" style="font-family:'Tahoma'">Tahoma</a></li>
+			          				<li><a data-edit="fontName Times" style="font-family:'Times'">Times</a></li>
+			          				<li>
+			          					<a data-edit="fontName Times New Roman" style="font-family:'Times New Roman'">Times New Roman</a>
+			          				</li>
+			          				<li><a data-edit="fontontName Verdana" style="font-family:'Verdana'">Verdana</a></li>
+			      				</ul>
+					        </div>
+					      <div class="btn-group">
+					        <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font Size"><i class="icon-text-height"></i>&nbsp;<b class="caret"></b></a>
+					          <ul class="dropdown-menu">
+					          <li><a data-edit="fontSize 5"><font size="5">Huge</font></a></li>
+					          <li><a data-edit="fontSize 3"><font size="3">Normal</font></a></li>
+					          <li><a data-edit="fontSize 1"><font size="1">Small</font></a></li>
+					          </ul>
+					      </div>
+					      <div class="btn-group">
+					        <a class="btn" data-edit="bold" title="Bold (Ctrl/Cmd+B)"><i class="icon-bold"></i></a>
+					        <a class="btn" data-edit="italic" title="Italic (Ctrl/Cmd+I)"><i class="icon-italic"></i></a>
+					        <a class="btn" data-edit="strikethrough" title="Strikethrough"><i class="icon-strikethrough"></i></a>
+					        <a class="btn" data-edit="underline" title="Underline (Ctrl/Cmd+U)"><i class="icon-underline"></i></a>
+					      </div>
+					      <div class="btn-group">
+					        <a class="btn" data-edit="insertunorderedlist" title="Bullet list"><i class="icon-list-ul"></i></a>
+					        <a class="btn" data-edit="insertorderedlist" title="Number list"><i class="icon-list-ol"></i></a>
+					       <!--  <a class="btn" data-edit="outdent" title="Reduce indent (Shift+Tab)"><i class="icon-indent-left"></i></a>
+					        <a class="btn" data-edit="indent" title="Indent (Tab)"><i class="icon-indent-right"></i></a> -->
+					      </div>
+					      <div class="btn-group">
+					        <a class="btn" data-edit="justifyleft" title="Align Left (Ctrl/Cmd+L)"><i class="icon-align-left"></i></a>
+					        <a class="btn" data-edit="justifycenter" title="Center (Ctrl/Cmd+E)"><i class="icon-align-center"></i></a>
+					        <a class="btn" data-edit="justifyright" title="Align Right (Ctrl/Cmd+R)"><i class="icon-align-right"></i></a>
+					        <a class="btn" data-edit="justifyfull" title="Justify (Ctrl/Cmd+J)"><i class="icon-align-justify"></i></a>
+					      </div>
+					      <!-- <div class="btn-group">
+							  <a class="btn dropdown-toggle" data-toggle="dropdown" title="Hyperlink"><i class="icon-link"></i></a>
+							    <div class="dropdown-menu input-append">
+								    <input class="span2" placeholder="URL" type="text" data-edit="createLink"/>
+								    <button class="btn" type="button">Add</button>
+					        </div>
+					        <a class="btn" data-edit="unlink" title="Remove Hyperlink"><i class="icon-cut"></i></a>
+
+					      </div> -->
+					      <div class="btn-group">
+					        <a class="btn" data-edit="undo" title="Undo (Ctrl/Cmd+Z)"><i class="icon-undo"></i></a>
+					        <a class="btn" data-edit="redo" title="Redo (Ctrl/Cmd+Y)"><i class="icon-repeat"></i></a>
+					      </div>
+					</div>
+					<div id="editor" ng-model="job.job_description"></div><br>
+				</div>
+				<!-- skill -->
+				<div class="step_01">
+					<div class="row">
+						<div class="col-xs-5">
+							<label class="formText">Must need skill</label>
+						</div>
+						<div class="col-xs-4">
+							<select id="job_skills" 
+								ng-model="job.skills" 
+								select-picker
+								data-width="235%" 
+								data-live-search="true" 
+								title="Selected skills(max 5)" 
+								ng-options ="skill as skill.code_value for skill in skillsOption" 
+								ng-change="selectSkill()"
+								multiple
+								watch="job.skills"
+								data-size="7">
+							</select>
+						</div>
+						
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div>
+								&nbsp;
+								<span ng-click="removeAllSelect()" class="hover-pointer" title="Remove">Remove all
+								<span id="removeAll" class="glyphicon glyphicon-remove"></span></span>
+								  <span class="errorMsg">{{skillsErrorMsg}}</span>
+							</div>
+							<div style="height:130px">
+								<div class="record hover" ng-repeat="skill in job.skills"
+									ng-click="removeSkill($index)"  title="Remove"
+									style="border-bottom: 0px;">{{skill.code_value}}
+									<span class="glyphicon glyphicon-remove"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr>
+
+			<div id="body">
+				<div class="category">
+						Second,enter you account
+				</div>
+				<!-- not exist account -->
+				<div ng-hide="existAccount">
+					<!-- nav -->
+					<div>
+						<ul class="nav nav-pills">
+						  <li ng-class="{active:active_new}" ng-click="activeNew()"><a href="javascript:void(0)">New user</a></li>
+						  <li ng-class="{active:active_old}" ng-click="activeOld()"><a href="javascript:void(0)">Old user</a></li>
+						</ul>
+					</div>
+					<br>
+					<br>
+						<!-- new -->
+						<div class="step_01">
+							<div ng-show="active_new">
+								<div class="row">
+									<div class="col-xs-5"></div>
+									<div><span class="errorMsg">{{accountErrorMsg}}</span></div>	
+								</div>
+								<div class="row">
+									<div class="col-xs-5">
+										<label class="formText">Account</label>
+									</div>
+									<div class="col-xs-4">
+										<input type="text" size="40" class="formInput" 
+										 placeholder="Enter your account" 
+										 ng-model="login.member_account"
+										 ng-disabled="accountInput"
+										 ng-blur="isExistAccount()">
+									 </div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="col-xs-5"></div>
+									<div><span class="errorMsg">{{emailErrorMsg}}</span></div>	
+								</div>
+								<div class="row">
+									<div class="col-xs-5">
+										<label class="formText">Email</label>
+									</div>	
+									<div class="col-xs-4">
+										<input  type="text" size="40" class="formInput"
+										 placeholder="Enter your Email" 
+										 ng-model="login.member_email"
+										 ng-blur="checkMail()"
+										 ng-disabled="accountInput">
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="col-xs-5"></div>
+									<div><span class="errorMsg">{{pwdErrorMsg}}</span></div>	
+								</div>
+								<div class="row">
+									<div class="col-xs-5">
+										<label class="formText">Password</label>
+									</div>	
+									<div class="col-xs-4">
+										<input type="password" size="40" class="formInput"
+										 placeholder="Enter your password"
+										 ng-model="login.member_pwd"
+										 ng-disabled="accountInput">
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="col-xs-5"></div>
+									<div><span class="errorMsg">{{pwd2ErrorMsg}}</span></div>	
+								</div>
+								<div class="row">
+									<div class="col-xs-5">
+										<label class="formText">Retype password</label>
+									</div>
+									<div class="col-xs-4">
+										<input type="password" size="40" class="formInput"
+										ng-model="login.member_pwd2"
+										placeholder="Retype password" 
+										ng-blur="checkPwd()"
+										ng-disabled="accountInput">
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="col-xs-5"></div>
+									<div><span class="errorMsg">{{nameErrorMsg}}</span></div>	
+								</div>
+								<div class="row">
+									<div class="col-xs-5">
+										<label class="formText">Company name</label>
+									</div>	
+									<div class="col-xs-4">
+										<input type="text" size="40" class="formInput"
+										placeholder="Enter company name or your name" 
+										ng-model="hirer.hirer_orgname">
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="col-xs-5">
+										<label class="formText">Headquarters</label>
+									</div>	
+									<div class="col-xs-4">	
+										<input type="text" size="40" class="formInput"
+										placeholder="Enter company address or your address" ng-model="hirer.hirer_orgaddress">
+									</div>		
+								</div>
+								<br>
+								<div class="row">
+									<div class="col-xs-5">
+										<label class="formText">Logo</label>
+									</div>	
+									<div class="col-xs-4">	
+										<input type="file" size="40" class="formInput"
+										name="file_upload" id="file_upload"  
+										ng-model="hirer.hirer_image"
+										>
+									</div>
+									<div class="col-xs-3">	
+										<img id="img" src="{{hirer.hirer_image}}" style="height:140px;"/>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="col-xs-5">
+									<label class="formText">URL</label>
+									</div>	
+									<div class="col-xs-4">
+										<input  type="text" size="40" class="formInput"
+										 placeholder="Enter company URL or your URL" ng-model="hirer.hirer_orgsite">
+									</div> 
+								</div>
+								<br>
+							</div>	
+						</div>
+						<!-- old -->
+						<div class="step_01">
+							<div ng-show="active_old">
+								<div class="row">
+									<div class="col-xs-6"></div>
+									<div ><span class="{{checkAccountClass}}">  {{checkAccountMsg}}</span></div>	
+								</div>
+								<div class="row">
+									<div class="col-xs-5">
+										<label class="formText">Account</label>
+									</div>	
+									<div class="col-xs-4">	
+										<input type="text" size="40" class="formInput"
+											ng-model="login.member_account" ng-blur="checkAccount()">
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="col-xs-6"></div>
+									<div><span class="{{checkPasswordClass}}"> {{checkPasswordMsg}}</span></div>	
+								</div>
+								<div  class="row">
+									<div class="col-xs-5">
+										<label class="formText">Password</label>
+									</div>	
+									<div class="col-xs-4">		
+										<input type="password" size="40" class="formInput" ng-model="login.member_pwd">
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="col-xs-6"></div>
+									<div class="col-xs-6">
+									<button ng-click="loginAccount()" class="btn btn-primary btn-lg btn-block">Login</button>
+									</div>
+								</div>
+								<br>
+							</div>
+						</div>			
+				</div>
+
+				<!-- exist account -->
+				<div ng-show="existAccount">
+					<div style="margin-left:19%;width:605px;">
+						<div style="float:right;">
+							<button class="btn btn-primary icon-signout" ng-click="loginOut()">LoginOut</button>
+						</div>
+						<table class="info" cellpading="2" cellSpacing="4" width="100%" >
+							<tr>
+								<td>
+									Account
+								</td>
+								<td>
+									<span class="infoData">{{login.member_account}}</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Email
+								</td>
+								<td>
+									<span class="infoData">{{login.member_email}}</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Name
+								</td>
+								<td>
+									<span class="infoData">{{hirer.hirer_orgname}}</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Url
+								</td>
+								<td>
+									<span class="infoData">{{hirer.hirer_orgsite}}</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Address
+								</td>
+								<td>
+									<span class="infoData">{{hirer.hirer_orgaddress}}</span>
+								</td>
+							</tr>
+						</table>
+						<div style="float:right;" >
+							<img src="{{hirer.hirer_image}}" height="100px;" width="200px;">
+						</div>
+					</div>
+				</div>
+
+				<!-- <div class="category">Last</div> -->
+				<br>
+				<br>
+				<div style="margin-left:15%;">
+					<div class="row">
+						<div class="col-xs-10" >
+							<span class="errorMsg">{{continueErrorMsg}}</span>
+							<span class="errorMsg">{{sendActiveMailErrorMsg}}</span>
+						</div>
+					</div>
+				</div>	
+				<div style="margin-left:19%;width:605px;">
+					<button class="btn btn-primary btn-lg btn-block" 
+							 ng-class="{disabled:continueClass}" ng-click="continueBtn()">Next Step
+					</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<!-- modal -->
+<div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-body" style="margin-left:10%;margin-top:20%;">
+       		<img src="/assets/img/loading1.gif">
+       		<span style="font-size:26px;padding-left:15%;">Loading.......</span>
+        </div>
+    </div>
+</div>

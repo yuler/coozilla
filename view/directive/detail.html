@@ -1,0 +1,70 @@
+<style type="text/css">
+		.jobTitle{
+			font-size: 22px;
+			color: #222;
+			padding: 0;
+			margin: 0 0 7px 0;
+			font-weight: bold;
+			line-height: 1em;
+		}
+		.jobSubTitle{
+			font-size: 20px;
+			font-weight: normal;
+			padding: 20px 20px 15px 20px;
+			color: #999;
+			margin: 0;
+		}
+
+		.jobDescription{
+			width: 595px;
+		}
+
+		.jobSkillList{
+			margin-left: 5px;	
+		}
+</style>
+<div id="body">
+	<div style="width: 595px;padding-left: 21%;">
+		<div style="width:595px;">
+			<div>
+				<span class="jobTitle">{{job.job_title}}  /  {{job.job_category|jobCategoryFilter}}</span>
+			</div>
+		</div>
+		<div class="row" style="width:595px;">
+			<hr>
+			<div class="jobDescription col-md-12" value="{{job.job_description}}">
+				
+			</div>
+			<hr>
+		</div>
+		<br>
+		<br>
+		<div class="row">
+			<div class="col-xs-8">
+				<div>
+					<span>Must need skill :</span>
+					<span >
+						<span ng-repeat="skill in job.skills">
+							{{skill}}
+						</span>
+					</span>
+				</div>
+				<div >
+					Email:{{login.member_email}}<br>
+					Address:{{hirer.hirer_orgaddress}}<br>
+					URL:{{hirer.hirer_orgsite}}<br>
+					Publisher : {{hirer.hirer_orgname}}<br>
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<img src="{{hirer.hirer_image}}" width="295px" height="135px;">
+			</div>
+		</div>
+		<br>
+		<br>
+		<div class="row">
+			<div class="col-md-5 col-md-offset-5"><span class="errorMsg">{{activeErrorMsg}}</span></div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,64 @@
+<div style="width:960px;height:340px;margin-left:15%;">
+	<div style="width:27%;height:100%;float:left;" class="panel-group" id="accordion" ng-show="menu">
+		<div class="panel panel-default">
+		    <div class="panel-heading">
+			    <h4 class="panel-title">
+			        <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="/#infoManagment">
+			           <strong>Information Management</strong>
+			        </a>
+			    </h4>
+		    </div>
+		    <div id="infoManagment" class="panel-collapse collapse" >
+		      	<div class="panel-body">
+		      		<button class="btn btn-lg btn-link" style="cursor:pointer;text-decoration:none;" ng-click="infoView()">
+		      			View
+		      		</button><br>
+		      		<button class="btn btn-lg btn-link" style="cursor:pointer;text-decoration:none;" ng-click="infoUpdate()">
+		      			Update
+		      		</button><br>
+		      	</div>
+	      	</div>
+      	</div>
+		<!-- <div class="panel panel-default">
+		    <div class="panel-heading">
+			    <h4 class="panel-title">
+			        <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="/#jobManagent">
+			           <strong>Job Managent</strong>
+			        </a>
+			    </h4>
+		    </div>
+		    <div id="jobManagent" class="panel-collapse collapse" >
+		      	<div class="panel-body">
+		      		<button class="btn btn-lg btn-link" style="cursor:pointer;text-decoration:none;">
+		      			Finished Jobs
+		      		</button>
+		      		<button class="btn btn-lg btn-link" style="cursor:pointer;text-decoration:none;">
+		      			Unfinished Jobs
+		      		</button>
+		      	</div>
+	      	</div>
+      	</div> -->
+      	<!-- <div class="panel panel-default">
+		    <div class="panel-heading">
+			    <h4 class="panel-title">
+			        <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="/#accountManagment">
+			           <strong>Account Management</strong>
+			        </a>
+			    </h4>
+		    </div>
+		    <div id="accountManagment" class="panel-collapse collapse" >
+		      	<div class="panel-body">
+		      		<button class="btn btn-lg btn-link" style="cursor:pointer;text-decoration:none;">
+		      			View
+		      		</button>
+		      		<button class="btn btn-lg btn-link" style="cursor:pointer;text-decoration:none;" ng-click="passUpdate()">
+		      			Change password
+		      		</button>
+		      	</div>
+	      	</div>
+      	</div> -->
+	</div>
+	<div style="width:73%;float:right;padding-left:2%;" ng-include="templateUrl">
+
+	</div>
+</div>

@@ -1,0 +1,268 @@
+<div class="container" id="body">
+	
+    <!-- <div class="col-xs-1"></div> -->
+
+	<div class="row">  
+		<center>
+			<div>
+				<button class="btn btn-lg btn-primary">
+					1.Create your Account
+				</button>&nbsp;&nbsp;
+				<button class="btn btn-lg btn-default">
+					2.Preview
+				</button>&nbsp;&nbsp;
+				<button class="btn btn-lg btn-default">
+					3.Finished
+				</button>
+			</div>
+			<div>
+				<br>
+				<div class="step">STEP 1: Create your Account</div>
+			</div>
+		</center>
+    </div>
+    <hr>
+	<div >
+		<!--创建帐帐号的第一步-->
+			<div class="category">
+				First,complete your login infomation
+			</div>
+			<div class="step_01">
+				<div class="row">
+					<div class="col-xs-5"></div>
+					<div><span class="errorMsg">{{emailmsg}}</span></div>	
+				</div>
+				<div class="row">
+					<div class="col-xs-5">
+						<label class="formText">Email</label>
+					</div>
+					<div class="col-xs-4">
+						<input  class="formInput" size="40" type="text" placeholder="Email"
+						 ng-model='login.member_email' ng-blur="checkEmail()" ng-disabled="accountInput">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-5"></div>
+					<div><span class="errorMsg">{{accountmsg}}</span></div>	
+				</div>
+				<div class="row">
+					<div class="col-xs-5">
+						<label class="formText">Account</label>
+					</div>
+					<div class="col-xs-4">
+						<input class="formInput" size="40"  type="text" placeholder="Account" ng-model='login.member_account' ng-blur="checkAccount()" ng-disabled="accountInput">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-5"></div>
+					<div><span class="errorMsg">{{passwordmsg1}}</span></div>	
+				</div>
+				<div class="row">
+					<div class="col-xs-5">
+						<label class="formText">Password</label>
+					</div>
+					<div class="col-xs-4">
+						<input class="formInput" size="40"  type="password" placeholder="Password"
+						 ng-model='login.member_pwd' ng-blur="checkPasswordLength()" ng-disabled="accountInput">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-5"></div>
+					<div><span class="errorMsg">{{passwordmsg}}</span></div>	
+				</div>
+				<div class="row">
+					<div class="col-xs-5">
+					<label class="formText">Retype Password</label>
+					</div>
+					<div class="col-xs-4">
+						<input class="formInput" size="40"  type="password"  placeholder="Retype Password"
+						 ng-model='login.member_pwd1'  ng-blur="checkPassword()" ng-disabled="accountInput">
+					</div>
+				</div>
+			</div>
+			<br>
+			<div class="category">
+					Second,your Account Infomation
+			</div>
+			<div class="step_01">
+				<div class="row">
+					<div class="col-xs-5"></div>
+					<div><span class="errorMsg">{{nameErrorMsg}}</span></div>	
+				</div>
+				<div class="row">
+					<div class="col-xs-5">
+						<label class="formText">Name</label>
+					</div>
+					<div  class="col-xs-4">
+						<input class="formInput" size="40" type="text" placeholder="Name" ng-model='worker.worker_name'>	
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-5"></div>
+					<div><span class="errorMsg">{{addressErrorMsg}}</span></div>	
+				</div>
+				<div class="row">
+					<div class="col-xs-5">
+						<label class="formText">Address</label>
+					</div>
+					<div  class="col-xs-4">
+						<input class="formInput" size="40" type="text" 
+						placeholder="Address" ng-model='worker.worker_address'>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-5"></div>
+					<div><span class="errorMsg">{{telephoneErrorMsg}}</span></div>	
+				</div>
+				<div class="row">
+					<div class="col-xs-5">
+						<label class="formText">Telephone</label>
+					</div>
+					<div  class="col-xs-4">
+						<input class="formInput" size="40" type="text" 
+						placeholder="Telephone" ng-model='worker.worker_telephone'>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-xs-5">
+						<label class="formText">Head portrait</label>
+					</div>
+					<div  class="col-xs-4">
+						<input class="field" type="file" size="50"
+						name="file_upload" id="file_upload"  
+						ng-model="worker.worker_image"
+						>
+					</div>
+					<div class="col-xs-3">
+						<img id="img" src="{{worker.worker_image}}" style="height:140px;"/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-5"></div>
+					<div><span class="errorMsg">{{skillsErrorMsg}}</span></div>	
+				</div>
+				<div class="row">
+					<div class="col-xs-5">
+						<label class="formText">Master skill</label>
+					</div>	
+					<div class="col-xs-4">
+						<select 
+				  			id="skill" 
+							ng-model="worker.skills" 
+							select-picker
+							data-width="235%" 
+							data-live-search="true" 
+							title="Selected skills"  
+							ng-options ="skill as skill.code_value for skill in skillsOption" 
+							ng-change="selectSkill()" 
+							multiple
+							watch="worker.skills"
+							data-size="7"
+							data-style="btn-lg">
+						</select>
+						
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12" style="height:150px;width:595px;">
+						<span ng-click="removeAllSelect()" class="hover-pointer" title="Remove">Remove all
+							<span id="removeAll" class="glyphicon glyphicon-remove"></span>
+						</span>
+						<br>
+						<br>
+						<span class="record hover" ng-repeat="skill in worker.skills" style="border-bottom:0px;"
+								ng-click="removeSkill($index)"  title="Remove">{{skill.code_value}}
+							<span class="glyphicon glyphicon-remove"></span>
+							&nbsp;
+						</span>
+					</div>	
+				</div>
+			</div>
+
+			<div class="step_01">
+				<div class="row">
+					<div class="col-xs-5">
+						<label class="formText">Experience</label>
+					</div>	
+				</div>
+			</div>	
+				<div id="toolbar" class="btn-toolbar" data-role="editor-toolbar"
+				 	data-target="#editor" style="margin-left: 19%">
+				      	<div class="btn-group">
+					        <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font">
+					        	<i class="icon-font"></i><b class="caret"></b>
+					        </a>
+				          	<ul class="dropdown-menu">
+		          				<li><a data-edit="fontName Serif" style="font-family:'Serif'">Serif</a></li>
+		          				<li><a data-edit="fontName Sans" style="font-family:'Sans'">Sans</a></li>
+		          				<li><a data-edit="fontName Arial" style="font-family:'Arial'">Arial</a></li>
+		          				<li><a data-edit="fontName Arial Black" style="font-family:'Arial Black'">Arial Black</a></li>
+		          				<li><a data-edit="fontName Courier" style="font-family:'Courier'">Courier</a></li>
+		          				<li><a data-edit="fontName Courier New" style="font-family:'Courier New'">Courier New</a></li>
+		          				<li><a data-edit="fontName Comic Sans MS" style="font-family:'Comic Sans MS'">Comic Sans MS</a></li>
+		          				<li><a data-edit="fontName Helvetica" style="font-family:'Helvetica'">Helvetica</a></li>
+		          				<li><a data-edit="fontName Impact" style="font-family:'Impact'">Impact</a></li>
+		          				<li><a data-edit="fontName Lucida Grande" style="font-family:'Lucida Grande'">Lucida Grande</a></li>
+		          				<li><a data-edit="fontName Lucida Sans" style="font-family:'Lucida Sans'">Lucida Sans</a></li>
+		          				<li><a data-edit="fontName Tahoma" style="font-family:'Tahoma'">Tahoma</a></li>
+		          				<li><a data-edit="fontName Times" style="font-family:'Times'">Times</a></li>
+		          				<li>
+		          					<a data-edit="fontName Times New Roman" style="font-family:'Times New Roman'">Times New Roman</a>
+		          				</li>
+		          				<li><a data-edit="fontontName Verdana" style="font-family:'Verdana'">Verdana</a></li>
+		      				</ul>
+				        </div>
+
+				        <div class="btn-group">
+					        <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font Size"><i class="icon-text-height"></i>&nbsp;<b class="caret"></b></a>
+					          <ul class="dropdown-menu">
+					          <li><a data-edit="fontSize 5"><font size="5">Huge</font></a></li>
+					          <li><a data-edit="fontSize 3"><font size="3">Normal</font></a></li>
+					          <li><a data-edit="fontSize 1"><font size="1">Small</font></a></li>
+					          </ul>
+				        </div>
+
+				      	<div class="btn-group">
+					        <a class="btn" data-edit="bold" title="Bold (Ctrl/Cmd+B)"><i class="icon-bold"></i></a>
+					        <a class="btn" data-edit="italic" title="Italic (Ctrl/Cmd+I)"><i class="icon-italic"></i></a>
+					        <a class="btn" data-edit="strikethrough" title="Strikethrough"><i class="icon-strikethrough"></i></a>
+					        <a class="btn" data-edit="underline" title="Underline (Ctrl/Cmd+U)"><i class="icon-underline"></i></a>
+				      	</div>
+					      
+					    <div class="btn-group">
+					        <a class="btn" data-edit="insertunorderedlist" title="Bullet list"><i class="icon-list-ul"></i></a>
+					        <a class="btn" data-edit="insertorderedlist" title="Number list"><i class="icon-list-ol"></i></a>
+					       <!--  <a class="btn" data-edit="outdent" title="Reduce indent (Shift+Tab)"><i class="icon-indent-left"></i></a>
+					        <a class="btn" data-edit="indent" title="Indent (Tab)"><i class="icon-indent-right"></i></a> -->
+					    </div>
+
+					    <div class="btn-group">
+					        <a class="btn" data-edit="justifyleft" title="Align Left (Ctrl/Cmd+L)"><i class="icon-align-left"></i></a>
+					        <a class="btn" data-edit="justifycenter" title="Center (Ctrl/Cmd+E)"><i class="icon-align-center"></i></a>
+					        <a class="btn" data-edit="justifyright" title="Align Right (Ctrl/Cmd+R)"><i class="icon-align-right"></i></a>
+					        <a class="btn" data-edit="justifyfull" title="Justify (Ctrl/Cmd+J)"><i class="icon-align-justify"></i></a>
+					    </div>
+					    <div class="btn-group">
+					        <a class="btn" data-edit="undo" title="Undo (Ctrl/Cmd+Z)"><i class="icon-undo"></i></a>
+					        <a class="btn" data-edit="redo" title="Redo (Ctrl/Cmd+Y)"><i class="icon-repeat"></i></a>
+					    </div>
+				</div>
+				<div id="editor" ng-model="worker.worker_experience">
+				</div><br>
+			</div>
+			<br>
+			<br>
+			<div style="padding-left:15%;">
+				<br><span class="errorMsg">{{continueErrorMsg}}</span>
+				<br><span>{{sendActiveMailErrorMsg}}</span>
+			</div>
+			<div style="padding-left:20%;">
+				<div class="row" style="width:600px;">
+				      <button type="submit" class="btn btn-block btn-primary btn-lg" 
+				      ng-click="registerAccount()">Next  Step</button>
+				    </div>
+				</div>
+			</div>
+	</div>
+</div>

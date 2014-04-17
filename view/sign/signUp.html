@@ -1,0 +1,90 @@
+<style type="text/css">
+.row{padding:20px 0;}
+</style>
+<div style="background-color: #eff0f2;padding-bottom:20px;padding-top:20px;">
+    <div class="container">
+        <span style="color:#919191;font-size:24px;">
+        	Sign Up.
+        </span>
+	</div>
+</div>
+<div class="container">
+	<div class="row" style="padding-top:50px;">
+		<div class="col-md-3">
+		  <label class="formText" for="account">Account</label></div>
+		<div class="col-md-4">
+		  <input type="text" class="form-control" id="account" ng-blur="blur_account()" ng-model="login.member_account" 
+	    		ng-class="{errorInput:accountInput}">
+		</div>
+		<div class="col-md-3">
+		  <span class="errorMsg" style="float:right;">{{accountErrorMsg}}</span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3">
+		 <label class="formText" for="email">Email</label></div>
+		<div class="col-md-4">
+		  <input type="text" class="form-control" id="email" ng-blur="blur_email()" ng-model="login.member_email" 
+	    		ng-class="{errorInput:mailInput}">
+		</div>
+		<div class="col-md-3">
+		  <span class="errorMsg" style="float:right;">{{mailErrorMsg}}</span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3">
+		 <label class="formText" for="pwd">Password</label></div>
+		<div class="col-md-4">
+		  <input type="password" class="form-control" id="pwd" ng-blur="blur_pwd()" ng-model="login.member_pwd" 
+	    		ng-class="{errorInput:pwdInput}">
+		</div>
+		<div class="col-md-3">
+		  <span class="errorMsg" style="float:right;">{{pwdErrorMsg}}</span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3">
+		 <label class="formText" for="pwd2">Repassword</label></div>
+		<div class="col-md-4">
+		  <input type="password" class="form-control" id="pwd2" ng-blur="blur_pwd2()" ng-model="login.member_pwd2" 
+	    		ng-class="{errorInput:pwd2Input}">
+		</div>
+		<div class="col-md-4">
+	    	<span class="errorMsg" style="float:right;">{{pwd2ErrorMsg}}</span>
+		</div>
+	</div>
+	<!-- <div class="row">
+		<div class="col-md-3">
+		 <label class="formText">Category</label></div>
+		<div class="col-md-4">
+		  <input id="member_category" type="checkbox" checked data-on="primary" data-off="danger" 
+			 data-on-label="Employer  " data-off-label="Employee  " class="switch-large" width="150%"/>
+		</div>
+		<div class="col-md-4">		
+			<span class="errorMsg" style="float:right;">{{ErrorMsg}}</span>
+		</div>
+	</div> -->
+	
+	<div class="row">
+		<div class="col-md-3">
+		 <label class="formText" for="checkCode">Verification code</label></div>
+		<div class="col-md-4">
+		  <input type="text" class="form-control" id="checkCode">
+		</div>
+		<div class="col-md-2">
+		  <img src="view/checkCode.php" height="34px;" id="checkCode_img"
+	    	style="position:relative;" onClick="create_code()"
+	    	title="Change code" >
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4 col-md-offset-2">
+			<button id="signUp" class="btn btn-lg btn-primary btn-block" ng-click="signUp()">Sign Up</button>
+		</div>
+	</div>
+</div>
+<script>
+function create_code(){
+    document.getElementById('checkCode_img').src = 'view/checkCode.php?'+Math.random()*10000;
+}
+</script>

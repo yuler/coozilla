@@ -1,0 +1,247 @@
+<style type="text/css">
+	div.inputClass{
+		font-size: 36px;
+		margin-top:-10px;
+	}
+	span.changeBtn{
+		font-size: 22px;
+	}
+	span.changeBtn a:hover{
+		text-decoration: none;
+	}
+	.profileLine{
+		padding-top: 4%;
+		padding-bottom: 2%;
+		border-bottom: 1px solid #eff0f2;
+	}
+	.profileLine label{
+		font-size: 22px;
+	}
+	.profileLine input{
+		width: 95%;
+	}
+</style>
+<style type="text/css">
+.row{padding:20px 0;}
+</style>
+<div style="background-color: #eff0f2;padding-bottom:20px;padding-top:20px;">
+    <div class="container">
+        <span style="color:#919191;font-size:24px;">
+        	Profile &nbsp; &nbsp; &nbsp;<span style="color:red;font-size:20px;">{{warningMsg}}</span>
+        </span>
+	</div>
+</div>
+<div class="container">
+	<div class="row" style="padding-top:50px;">
+		<div class="col-md-2">
+	    	<label class="formText">Account</label>
+		</div>
+		<div class="col-md-5">
+	    	<span class="changeBtn">
+	    		<a ng-click="changeAccount()" class="hover" ng-init="account = true"></a>
+	    	</span>
+	    	<div class="inputClass" ng-show="account">{{login.member_account}}</div>
+	    	<div class="inputClass" ng-hide="account"><input type="text" value="{{login.member_account}}"></div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-2">
+	    	<label class="formText">Password</label>
+		</div>
+		<div class="col-md-5">
+	    	<span class="changeBtn">
+	    		<a ng-click="changePassword()" ng-init="password = true" class="hover" disabled></a>
+	    	</span>
+	    	<div class="inputClass" ng-show="password">••••••</div>
+	    	<div class="inputClass" ng-hide="password"><input type="password" value="••••••"></div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-2">
+	    	<label class="formText">Email</label>
+		</div>
+		<div class="col-md-5">
+	    	<span class="changeBtn">
+	    		<a ng-click="changeEmail()" ng-init="email = true" class="hover"></a>
+	    	</span>
+	    	<div class="inputClass" ng-show="email">{{login.member_email}}</div>
+	    	<div class="inputClass" ng-hide="email"><input type="text" value="{{login.member_email}}"></div>
+		</div>
+	</div>
+	<!-- 雇佣者 -->
+    <div ng-show="login.member_category == 2">
+    	<div class="row">
+			<div class="col-md-2">
+		    	<label class="formText">Name</label>
+			</div>
+			<div class="col-md-7">
+		    	<div class="inputClass" ng-show="name">{{hirer.hirer_orgname}}</div>
+		    	<div ng-hide="name">
+		    		<input type="text" value="{{hirer.hirer_orgname}}" ng-model="hirer.hirer_orgname" 
+		    				class="form-control" placeholder = "Please enter your name.">
+		    	</div>
+			</div>
+			<div class="col-md-2">
+		    	<span class="changeBtn">
+		    		<a ng-click="changeName()" class="hover" ng-init="name = true">Change/Save</a>
+		    	</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2">
+		    	<label class="formText">Url</label>
+			</div>
+			<div class="col-md-7">
+		    	<div class="inputClass" ng-show="url">{{hirer.hirer_orgsite}}</div>
+		    	<div ng-hide="url">
+		    		<input type="text" value="{{hirer.hirer_orgsite}}" ng-model="hirer.hirer_orgsite" class="form-control" placeholder = "Please enter your URL.">
+		    	</div>
+			</div>
+			<div class="col-md-2">
+		    	<span class="changeBtn">
+		    		<a ng-click="changeUrl()" class="hover" ng-init="url = true">Change/Save</a>
+		    	</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2">
+		    	<label class="formText">Address</label>
+			</div>
+			<div class="col-md-7">
+		    	<div class="inputClass" ng-show="address">{{hirer.hirer_orgaddress}}</div>
+		    	<div ng-hide="address">
+		    		<input type="text" value="{{hirer.hirer_orgaddress}}" ng-model="hirer.hirer_orgaddress" class="form-control"placeholder = "Please enter your address.">
+		    	</div>
+			</div>
+			<div class="col-md-2">
+		    	<span class="changeBtn">
+		    		<a ng-click="changeAddress()" class="hover" ng-init="address = true">Change/Save</a>
+		    	</span>
+			</div>
+		</div>
+	    <!-- <div class="profileLine" style="padding-bottom:8%;">
+	    	<label style="padding-top:3%;">Logo</label>
+	    	<span class="changeBtn" style="padding-top:3%;">
+	    		<form action="uploads/upload.php" method="post" 
+	    			enctype="multipart/form-data" id="changHirerImg" hidden>
+					<input type="file" size="40" name="Filedata" id="hirer_file_upload" onchange="changeHirerImg()">
+				</form>
+				<a class="hover" onclick="clickHirerImg()">change</a>
+	    	</span>
+	    	<div class="inputClass" >
+	    		<img id="hirerImg" src="{{hirer.hirer_image}}"  width="200px" height="100px" onclick="clickHirerImg()">
+	    	</div>
+	    </div> -->
+    </div>
+    <!-- 程序员 -->
+    <div  ng-show="login.member_category == 1">
+    	<div class="row">
+			<div class="col-md-2">
+		    	<label class="formText">Name</label>
+			</div>
+			<div class="col-md-7">
+		    	<div class="inputClass" ng-show="name">{{worker.worker_name}}</div>
+		    	<div ng-hide="name">
+		    		<input type="text" value="{{worker.worker_name}}" ng-model="worker.worker_name" class="form-control" placeholder = "Please enter your name.">
+		    	</div>
+			</div>
+			<div class="col-md-2">
+		    	<span class="changeBtn">
+		    		<a ng-click="changeName()" class="hover" ng-init="name = true">Change/Save</a>
+		    	</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2">
+		    	<label class="formText">Address</label>
+			</div>
+			<div class="col-md-7">
+		    	<div class="inputClass" ng-show="address">{{worker.worker_address}}</div>
+		    	<div ng-hide="address">
+		    		<input type="text" value="{{worker.worker_address}}" ng-model="worker.worker_address" class="form-control"placeholder = "Please enter your address.">
+		    	</div>
+			</div>
+			<div class="col-md-2">
+		    	<span class="changeBtn">
+		    		<a ng-click="changeAddress()" class="hover" ng-init="address = true">Change/Save</a>
+		    	</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2">
+		    	<label class="formText">Telephone</label>
+			</div>
+			<div class="col-md-7">
+		    	<div class="inputClass" ng-show="telephone">{{worker.worker_telephone}}</div>
+		    	<div ng-hide="telephone">
+		    		<input type="text" value="{{worker.worker_telephone}}" ng-model="worker.worker_telephone" class="form-control" placeholder = "Please enter your telephone.">
+		    	</div>
+			</div>
+			<div class="col-md-2">
+		    	<span class="changeBtn">
+		    		<a ng-click="changeTelephone()" class="hover" ng-init="telephone = true">Change/Save</a>
+		    	</span>
+			</div>
+		</div>
+	 </div>
+</div>
+<script type="text/javascript">
+	function clickHirerImg(){
+		$('#hirer_file_upload').trigger('click');
+	}
+	function clickWorkerImg(){
+		$('#worker_file_upload').trigger('click');
+	}
+	function changeHirerImg(){
+		// if($('#img').attr('src') == '' || $('#img').attr('src') == undefined){
+	        $('#changHirerImg').ajaxSubmit(function(msg){
+	        	if(msg == ''){
+	        		alert('Invalid file type.');
+	        	}else{
+	        		var fileOld = $('#hirerImg').attr('src');
+	        		var fileNew = msg;
+		        	$('#hirerImg').attr('src',fileNew);
+		        	//delete old img
+	        		$.ajax({
+					 	type: "POST",
+			          	url: "uploads/remove.php",
+			          	data: "file="+fileOld
+			        });	
+		        	
+			        //update DB img value
+			        $.ajax({
+			        	type: "POST",
+			          	url: "uploads/updateHirerImg",
+			          	data: "fileNew="+fileNew+"&fileOld="+fileOld
+	        		});
+	        	}
+	        });
+		// }
+	}
+	function changWorkerImg(){
+		// if($('#img').attr('src') == '' || $('#img').attr('src') == undefined){
+	        $('#changWorkerImg').ajaxSubmit(function(msg){
+	        	if(msg == ''){
+	        		alert('Invalid file type.');
+	        	}else{
+	        		var fileOld = $('#workerImg').attr('src');
+	        		var fileNew = msg;
+		        	$('#workerImg').attr('src',fileNew);
+		        	//delete old img
+	        		$.ajax({
+					 	type: "POST",
+			          	url: "uploads/remove.php",
+			          	data: "file="+fileOld
+			        });	
+		        	
+			        //update DB img value
+			        $.ajax({
+			        	type: "POST",
+			          	url: "uploads/updateWorkerImg",
+			          	data: "fileNew="+fileNew+"&fileOld="+fileOld
+	        		});
+	        	}
+	        });
+		// }
+	}
+</script>

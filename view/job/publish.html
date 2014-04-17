@@ -1,0 +1,41 @@
+<div class="container" style="margin-top:-20px;">
+	<div class="row">
+		<div class="col-md-3">
+			<a class="btn btn-lg btn-default step_btn">
+				1. Create Your Job
+			</a></div>
+		<div class="col-md-3">
+		  <a class="btn btn-lg btn-default step_btn">
+		    2. Preview
+		  </a>
+		</div>
+		<div class="col-md-3">
+		  <a class="btn btn-lg btn-primary step_btn">
+		    3. Confirm And Publish
+		  </a>
+		</div>
+	</div>
+	<HR><br>	
+	<h2>Confirm And Publish</h2><br>
+	<HR>
+	<br>
+	<div class="row">
+		<div class="col-md-3">
+			<a class="btn btn-lg btn-block btn-primary" ng-click="previousStep()"><font> Previous Step</font></a>
+		</div>
+		<div class="col-md-3">
+			<button class="btn btn-lg btn-block btn-primary" ng-click="publish()" 
+				ng-class="{disabled:continueClass}" >Publish It (Free)</button>
+		</div>
+	</div>
+</div>
+
+<!-- modal -->
+<div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-body" style="margin-left:10%;margin-top:20%;">
+       		<img src="/assets/img/loading1.gif">
+       		<span style="font-size:26px;padding-left:15%;">Loading.......</span>
+        </div>
+    </div>
+</div>
